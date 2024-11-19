@@ -1,0 +1,12 @@
+services:
+  db:
+    image: postgres:15.2
+    container_name: online-store-db
+    restart: on-failure
+    environment:
+      POSTGRES_USER:
+      POSTGRES_PASSWORD:
+      POSTGRES_DB: 
+      TZ: Europe/Moscow
+    ports:
+      - "5432:5432"
