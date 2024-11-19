@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "rabbitmq"
+version = "0.1.0"
+description = ""
+authors = ["Ilya <mnailJk@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+loguru = "^0.7.2"
+pydantic-settings = "^2.6.1"
+sqlalchemy = "^2.0.36"
+asyncpg = "^0.30.0"
+httpx = "^0.27.2"
+pytz = "^2024.2"
+alembic = "^1.14.0"
+uvicorn = "^0.32.0"
+pydantic = "^2.9.2"
+inflection = "^0.5.1"
+itsdangerous = "^2.2.0"
+starlette = "^0.41.2"
+python-multipart = "^0.0.17"
+passlib = "^1.7.4"
+fastapi = "^0.115.5"
+pytest = "^8.3.3"
+pytest-asyncio = "^0.24.0"
+factory-boy = "^3.3.1"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.7.3"
+mypy = "^1.13.0"
+pytz = "^2024.2"
+types-pytz = "^2024.2.0.20241003"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
