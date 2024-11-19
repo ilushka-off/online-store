@@ -13,4 +13,4 @@ class Address(BaseModel, IDMixin):
     index: Mapped[str] = mapped_column(String(length=50), nullable=True)
 
     def __str__(self) -> str:
-        return f"Address by id #{self.id}"
+        return f"Address #{self.id}"

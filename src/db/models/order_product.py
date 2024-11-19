@@ -1,23 +1,23 @@
 from db.models.base import BaseModel
 from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import ForeignKey, Integer
-from db.models.product import Product
-from db.models.order import Order
+from sqlalchemy import ForeignKey, Integer, PrimaryKeyConstraint
 
 
 class OrderProduct(BaseModel):
     order_id: Mapped[int] = mapped_column(
         Integer,
-        ForeignKey(Order.id, ondelete="CASCADE"),
+        ForeignKey("orders.id", ondelete="CASCADE"),
         nullable=False,
         primary_key=True,
     )
     product_id: Mapped[int] = mapped_column(
         Integer,
-        ForeignKey(Product.id, ondelete="CASCADE"),
+        ForeignKey("products.id", ondelete="CASCADE"),
         nullable=False,
         primary_key=True,
     )
+
+    __table_args__ = (PrimaryKeyConstraint("order_id", "product_id"),)
 
     def __str__(self) -> str:
         return f"OrderProduct of Order {self.order_id} and Product {self.product_id}"
