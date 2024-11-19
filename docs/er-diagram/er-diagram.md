@@ -23,8 +23,9 @@ Enum order_payment_metod_enum {
 
 Table "public"."categories" {
   "id" serial4 [pk, not null, ref: < public.products.category_id]
-  "name" varchar(50) [not null]
+  "title" varchar(50) [not null]
   "description" text [not null]
+  "is_active" bool [not null, default: False]
   "created_at" timestamp [not null, default: 'CURRENT_TIMESTAMP'] 
 
 }
@@ -48,8 +49,8 @@ Table "public"."order_details" {
 Table "public"."products" {
   "id" serial4 [pk, not null, ref: < public.order_products.product_id]
   "category_id" integer [not null]
+  "title" varchar(50) [not null]
   "number" varchar(50) [not null]
-  "name" varchar(50) [not null]
   "description" text [not null]
   "price" numeric(7,2) [not null]
   "amount" int4 [not null, default: 0]
