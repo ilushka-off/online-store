@@ -1,7 +1,15 @@
 from db.models import BaseModel
 from db.models.mixins import IDMixin, CreatedAtMixin
 from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import String, Integer, ForeignKey, Numeric, Boolean, Text
+from sqlalchemy import (
+    String,
+    Integer,
+    ForeignKey,
+    Numeric,
+    Boolean,
+    Text,
+    CheckConstraint,
+)
 
 
 class Product(BaseModel, IDMixin, CreatedAtMixin):
@@ -11,7 +19,7 @@ class Product(BaseModel, IDMixin, CreatedAtMixin):
         nullable=False,
     )
     number: Mapped[str] = mapped_column(String(length=50), nullable=False)
-    name: Mapped[str] = mapped_column(String(length=50), nullable=False)
+    title: Mapped[str] = mapped_column(String(length=50), nullable=False)
     description: Mapped[str] = mapped_column(Text, nullable=False)
     price: Mapped[float] = mapped_column(Numeric(7, 2), nullable=False)
     amount: Mapped[int] = mapped_column(
@@ -21,5 +29,7 @@ class Product(BaseModel, IDMixin, CreatedAtMixin):
         Boolean, nullable=False, unique=False, default=False
     )
 
+    __table_args__ = (CheckConstraint("amount >= 0", name="check_amount_non_negative"),)
+
     def __str__(self) -> str:
-        return f"Product {self.name}"
+        return f"Product {self.title}"
