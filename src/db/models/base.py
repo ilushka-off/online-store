@@ -15,6 +15,9 @@ class BaseModel(DeclarativeBase):
         if cls.__name__[-1] == "y":
             name = cls.__name__[:-1] + "ies"
             return inflection.underscore(name)
+        elif cls.__name__[-1] == "s":
+            name = cls.__name__ + "es"
+            return inflection.underscore(name)
 
         return inflection.underscore(cls.__name__) + "s"
 

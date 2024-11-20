@@ -5,7 +5,6 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 
 class Address(BaseModel, IDMixin):
-    flat: Mapped[str] = mapped_column(String(length=50), nullable=True)
     house: Mapped[str] = mapped_column(String(length=50), nullable=False)
     street: Mapped[str] = mapped_column(String(length=50), nullable=False)
     city: Mapped[str] = mapped_column(String(length=50), nullable=False)
