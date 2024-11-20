@@ -18,7 +18,7 @@ class Product(BaseModel, IDMixin, CreatedAtMixin):
         ForeignKey("categories.id", ondelete="CASCADE"),
         nullable=False,
     )
-    number: Mapped[str] = mapped_column(String(length=50), nullable=False)
+    number: Mapped[str] = mapped_column(String(length=50), nullable=False, unique=True)
     title: Mapped[str] = mapped_column(String(length=50), nullable=False)
     description: Mapped[str] = mapped_column(Text, nullable=False)
     price: Mapped[float] = mapped_column(Numeric(7, 2), nullable=False)
