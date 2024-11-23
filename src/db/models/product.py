@@ -22,12 +22,8 @@ class Product(BaseModel, IDMixin, CreatedAtMixin):
     title: Mapped[str] = mapped_column(String(length=50), nullable=False)
     description: Mapped[str] = mapped_column(Text, nullable=False)
     price: Mapped[float] = mapped_column(Numeric(7, 2), nullable=False)
-    amount: Mapped[int] = mapped_column(
-        Integer, nullable=False, default=0, unique=False
-    )
-    is_active: Mapped[bool] = mapped_column(
-        Boolean, nullable=False, unique=False, default=False
-    )
+    amount: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    is_active: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
 
     __table_args__ = (CheckConstraint("amount >= 0", name="check_amount_non_negative"),)
 
